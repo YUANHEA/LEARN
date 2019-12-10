@@ -1,14 +1,17 @@
 <template>
   <div class="header">
       <div class="header-left">
-        <span class="iconfont">&#xe618;</span>
+        <!-- <span class="iconfont">&#xe618;</span> -->
+        <!-- 将span改div，显示display:block,占据空间大些 -->
+        <div class="iconfont back-icon">&#xe618;</div>
       </div>
       <div class="header-input">
         <span class="iconfont">&#xe609;</span>
         输入城市/景点/游玩主题
       </div>
       <div class="header-right">
-        <span class="iconfont">
+        城市
+        <span class="iconfont arrow-icon">
           &#xe64a;
         </span>
       </div>
@@ -41,6 +44,9 @@ export default {
     &-left{
       width: .64rem;
       float: left;
+      .back-icon{
+        text-align: center;
+      }
     }
     &-input{
       flex: 1;
@@ -52,11 +58,16 @@ export default {
       background-color: #fff;
       border-radius: .1rem;
       color: #ccc;
+      padding-left: .1rem;
     }
     &-right{
       width: 1.24rem;
       float: right;
       text-align: center;
+      .arrow-icon{
+        margin-left: -.01rem;
+        font-size: .24rem; // 对于图标字体大小调整，用fontsize，因为本质就是font字体
+      }
     }
   }
 </style>
