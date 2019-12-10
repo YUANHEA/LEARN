@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './assets/style/reset.css' // 设置默认样式：在reset文件中对默认样式重置。
-import './assets/style/border.css' // 解决一像素边框问题：在border文件中对1px样式进行设置。
+import 'style/reset.css' // 设置默认样式：在reset文件中对默认样式重置。
+import 'style/border.css' // 解决一像素边框问题：在border文件中对1px样式进行设置。
+import 'style/iconfont.css'
 import fastClick from 'fastclick' // 导入fastclick库
 
 Vue.config.productionTip = false

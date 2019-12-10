@@ -1,8 +1,17 @@
 <template>
   <div class="header">
-      <div class="header-left">left</div>
-      <div class="header-input">input</div>
-      <div class="header-right">right</div>
+      <div class="header-left">
+        <span class="iconfont">&#xe618;</span>
+      </div>
+      <div class="header-input">
+        <span class="iconfont">&#xe609;</span>
+        输入城市/景点/游玩主题
+      </div>
+      <div class="header-right">
+        <span class="iconfont">
+          &#xe64a;
+        </span>
+      </div>
   </div>
 </template>
 
@@ -13,6 +22,7 @@ export default {
 </script>
 // 用scss管理css，为了不让本组件样式影响其它组件，用scoped特性
 <style lang="scss" scoped>
+@import '~style/scss/_valiable.scss';
 // 确定父容器大小，子元素大小和位置
 // rem计算
 // 设计稿为2X,那么html根元素中fontsize:50px写为100px一半，这样就能直接.xrem
@@ -26,7 +36,7 @@ export default {
   .header{
     display: flex;
     line-height: .86rem; // line-heigth设置在父容器，让容器里面内容垂直居中
-    background-color: #00bcd4;
+    background-color: $bgColor;
     color: #fff;
     &-left{
       width: .64rem;
