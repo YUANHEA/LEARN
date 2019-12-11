@@ -7,9 +7,12 @@ import 'style/reset.css' // 设置默认样式：在reset文件中对默认样�
 import 'style/border.css' // 解决一像素边框问题：在border文件中对1px样式进行设置。
 import 'style/iconfont.css'
 import fastClick from 'fastclick' // 导入fastclick库
+import VueAwesomeSwiper from 'vue-awesome-swiper' // 导入vue-awesome-swiper库
+// VueAwesomeSwiper styles
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
-
+Vue.use(VueAwesomeSwiper) // { default global options }
 // 解决300毫秒点击延迟问题：安装fastclick库，npm install fastclick --save。
 // --save意思是不管在开发环境还是上线都用到fastclick这个库,那就通过--save将它保存到package.json这个库中
 fastClick.attach(document.body) // 将fastclick绑定到网页
