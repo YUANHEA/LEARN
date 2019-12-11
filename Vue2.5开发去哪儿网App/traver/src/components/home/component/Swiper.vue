@@ -53,10 +53,11 @@ export default {
   background: white;
 }
 .swiper{
+  // 图片容器宽高比，如果不设置和图片宽高比相同，分页点显示不出。
   overflow: hidden;
   width: 100%;
   height: 0;
-  padding-bottom: 32.9%;
+  padding-bottom: 29.95%;
   &-img{
     width: 100%;
   }
