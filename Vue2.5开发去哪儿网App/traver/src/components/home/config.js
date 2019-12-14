@@ -66,5 +66,11 @@ export const navItems = [
     linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-10.png'),
     text: '拍卖'
+  },
+  {
+    id: '11',
+    linkUrl: 'https://www.imooc.com',
+    picUrl: require('./img/nav-item-10.png'),
+    text: '拍卖'
   }
 ]
