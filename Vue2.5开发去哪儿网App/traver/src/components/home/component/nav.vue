@@ -30,7 +30,8 @@
               <!-- 因为li是渲染元素直接容器因此vfor设置在这层 -->
                 <a :href="item.linkUrl" class="nav-link">
                     <img :src="item.picUrl" class="nav-img">
-                    <span>{{item.text}}</span>
+                    <!-- <span class="nav-txt">{{item.text}}</span> -->
+                    <p class="nav-desc">{{item.text}}</p>
                 </a>
             </li>
         </ul>
@@ -81,7 +82,8 @@ export default {
     padding-bottom: 39%;
     background-color: #ccc;
     padding-top: .15rem;
-    // padding-bottom: .3rem;
+    // 带资源那种模块尽量采用适应容器宽高比
+    // padding-bottom: .075rem;
     // &-item{flex: 1;}
     // 要换两行只能给元素设置width,否则需要另起一行
     &-item{
@@ -92,10 +94,18 @@ export default {
     &-link{
       // 如果是mixin中函数，需要用@include赋值
       @include flex-center(column);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     &-img{
       width: 60%;
       margin-bottom: .08rem;
+    }
+    &-desc{
+      width: 70%; // 文本溢出显示省略号，需要配合宽度
+      text-align: center;
+      @include ellipsis();
     }
 }
 </style>
