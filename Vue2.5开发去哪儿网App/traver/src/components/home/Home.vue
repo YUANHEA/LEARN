@@ -2,15 +2,15 @@
   <div>
       <!-- 局部组件显示 -->
       <!-- 幻灯片组件 -->
-      <home-header></home-header>
+      <home-header :city='city'></home-header>
       <!-- 分类导航组件 -->
-      <swiper></swiper>
+      <swiper :swiperList='swiperList'></swiper>
       <!-- 分类导航组件 -->
-      <home-nav></home-nav>
+      <home-nav :iconList='iconList'></home-nav>
       <!-- 热销推荐组件 -->
-      <home-recomment></home-recomment>
+      <home-recomment :recommendList='recommendList'></home-recomment>
       <!-- 周末游组件组件 -->
-      <home-weekend></home-weekend>
+      <home-weekend :weekendList='weekendList'></home-weekend>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import Swiper from './component/Swiper' // 导入幻灯片组件
 import HomeNav from './component/nav' // 导入分类导航组件
 import HomeRecomment from './component/Recomment' // 导入热销推荐组件
 import HomeWeekend from './component/Weekend' // 导入周末游组件组件
+import axios from 'axios'
 export default {
   name: 'home',
   components: {
@@ -31,7 +32,41 @@ export default {
     HomeWeekend
   },
   data () {
-    return {}
+    return {
+      city: '', // 城市
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
+    }
+  },
+  methods: {
+    // 先axios接受数据，再通过父组件传值给子组件，分数据到各个子组件
+    getHomeInf: function () {
+      // 在methors中调用方法不用方法名，因为同为对象？
+      // 一个页面一个接口请求
+      axios.get('/static/mock/index.json').then(this.getHomeInfSucc)
+    },
+    getHomeInfSucc: function (res) {
+      console.log('数据', res)
+      // 参数解析
+      // 先用参数本身取出data！
+      res = res.data
+      // 返回状态正常且有数据
+      if (res.ret && res.data) {
+        // 将接受到的数据先保存到变量中，再调用变量
+        const dat = res.data
+        this.city = dat.city
+        this.swiperList = dat.swiperList
+        this.iconList = dat.iconList
+        this.recommendList = dat.recommendList
+        this.weekendList = dat.weekendList
+      }
+    }
+  },
+  // 在mounted方法中调用axios方法
+  mounted () {
+    this.getHomeInf()
   }
 }
 </script>

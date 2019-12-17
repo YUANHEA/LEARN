@@ -6,10 +6,10 @@
       <!-- <div></div> -->
       <!-- 多用ul与li与做列表项，不用div -->
       <ul>
-          <li class="item border-bottom" v-for="item of reccomentItems" :key="item.id">
+          <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
               <!-- li中再用div分模块 -->
               <div class="item-img-wrap">
-                  <img class="item-img" :src="item.picUrl" alt="#">
+                  <img class="item-img" :src="item.imgUrl" alt="#">
               </div>
               <div class="item-inf">
                   <p class="item-title">{{item.title}}</p>
@@ -22,11 +22,16 @@
 </template>
 
 <script>
-import {reccomentItems} from '../config'
+// import {reccomentItems} from '../config'
 export default {
   name: 'HomeRecomment',
   created () {
-    this.reccomentItems = reccomentItems
+    // this.reccomentItems = reccomentItems
+  },
+  props: {
+    recommendList: {
+      type: Array
+    }
   }
 }
 </script>

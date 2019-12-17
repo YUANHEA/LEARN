@@ -1,10 +1,11 @@
 <template>
   <div class="swiper">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
       <!-- <swiper-slide><img src="" alt="https://www.imooc.com" class="swiper-img" :key="1"></swiper-slide>
       <swiper-slide><img src="" alt="https://www.imooc.com" class="swiper-img" :key="2"></swiper-slide>
       <swiper-slide><img src="" alt="https://www.imooc.com" class="swiper-img" :key="3"></swiper-slide> -->
+      <!-- <swiper-slide v-for='item of swiperList' :key='item.id'> -->
       <swiper-slide v-for='item of swiperList' :key='item.id'>
         <img :src="item.imgUrl" alt="#" class="swiper-img">
       </swiper-slide>
@@ -17,6 +18,11 @@
 <script>
 export default {
   name: 'HomeSwiper', // 组件名不能和某单词重复，再组件名前面写上页面名就不会和关键词冲突
+  props: {
+    swiperList: {
+      type: Array
+    }
+  },
   data () {
     return {
       // swiperawesome插件配置参数
@@ -30,17 +36,24 @@ export default {
           clickable: true
         } // 这样写小圆点就有了
         // pagination: true
-      },
-      swiperList: [{
-        id: '001',
-        imgUrl: '//imgs.qunarzz.com/vc/48/4d/58/490ca00c8127e8fe8276ab1a20.jpg_92.jpg'
-      }, {
-        id: '002',
-        imgUrl: '//imgs.qunarzz.com/vc/44/e9/86/95bc36c9e1c06ebd68bdfe222e.jpg_92.jpg'
-      }, {
-        id: '003',
-        imgUrl: '//imgs.qunarzz.com/vc/aa/9e/82/14bf523635542806a671763e98.jpg_92.jpg'
-      }]
+      }
+      // 未用接口版数据
+      // swiperList: [{
+      //   id: '001',
+      //   imgUrl: '//imgs.qunarzz.com/vc/48/4d/58/490ca00c8127e8fe8276ab1a20.jpg_92.jpg'
+      // }, {
+      //   id: '002',
+      //   imgUrl: '//imgs.qunarzz.com/vc/44/e9/86/95bc36c9e1c06ebd68bdfe222e.jpg_92.jpg'
+      // }, {
+      //   id: '003',
+      //   imgUrl: '//imgs.qunarzz.com/vc/aa/9e/82/14bf523635542806a671763e98.jpg_92.jpg'
+      // }]
+      // 接口版数据
+    }
+  },
+  computed: {
+    showSwiper () {
+      return this.swiperList.length
     }
   }
 }
@@ -57,7 +70,7 @@ export default {
   overflow: hidden;
   width: 100%;
   height: 0;
-  padding-bottom: 29.95%;
+  padding-bottom: 31.250%;
   &-img{
     width: 100%;
   }

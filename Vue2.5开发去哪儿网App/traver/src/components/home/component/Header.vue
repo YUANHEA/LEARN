@@ -10,7 +10,7 @@
         输入城市/景点/游玩主题
       </div>
       <div class="header-right">
-        城市
+        {{city}}
         <span class="iconfont arrow-icon">
           &#xe64a;
         </span>
@@ -20,7 +20,12 @@
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: {
+      type: String
+    }
+  }
 }
 </script>
 // 用scss管理css，为了不让本组件样式影响其它组件，用scoped特性

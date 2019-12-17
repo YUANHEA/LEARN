@@ -4,9 +4,9 @@
       <div class="title">周末去哪儿</div>
       <!-- list -->
       <ul>
-          <li class="item border-bottom" v-for="item of weekendItems" :key="item.id">
+          <li class="item border-bottom" v-for="item of weekendList" :key="item.id">
               <div class="item-img-wrap">
-                  <img class="item-img" :src="item.picUrl" alt="#">
+                  <img class="item-img" :src="item.imgUrl" alt="#">
               </div>
               <div class="item-inf">
                   <p class="item-title">{{item.title}}</p>
@@ -18,11 +18,16 @@
 </template>
 
 <script>
-import {weekendItems} from '../config'
+// import {weekendItems} from '../config'
 export default {
   name: 'HomeWeekend',
   created () {
-    this.weekendItems = weekendItems
+    // this.weekendItems = weekendItems
+  },
+  props: {
+    weekendList: {
+      type: Array
+    }
   }
 }
 </script>
@@ -39,7 +44,7 @@ export default {
         overflow: hidden;
         width: 100%;
         height: 0;
-        padding-bottom: 30.5%;
+        padding-bottom: 39.924%;
     }
     &-img{
         width: 100%;

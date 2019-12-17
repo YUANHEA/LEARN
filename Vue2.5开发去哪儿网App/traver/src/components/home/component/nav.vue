@@ -1,6 +1,6 @@
 <template>
   <div>
-    <swiper>
+    <swiper :options="swiperOption">
       <!-- 由swiper-slide标签决定，页面显示在哪页 -->
       <!-- <swiper-slide>
         <ul class="nav">
@@ -28,10 +28,10 @@
         <ul class="nav">
             <li class="nav-item" v-for="item of page" :key="item.id">
               <!-- 因为li是渲染元素直接容器因此vfor设置在这层 -->
-                <a :href="item.linkUrl" class="nav-link">
-                    <img :src="item.picUrl" class="nav-img">
+                <a href="#" class="nav-link">
+                    <img :src="item.imgUrl" class="nav-img">
                     <!-- <span class="nav-txt">{{item.text}}</span> -->
-                    <p class="nav-desc">{{item.text}}</p>
+                    <p class="nav-desc">{{item.desc}}</p>
                 </a>
             </li>
         </ul>
@@ -48,17 +48,43 @@ export default {
     this.navs = navItems
     // console.log(this.navs)
   },
+  props: {
+    iconList: {
+      type: Array
+    }
+  },
   data () {
-    return {}
+    return {
+      // iconListDat: this.iconList
+      // swiperawesome插件配置参数
+      swiperOption: {
+        autoplay: false
+      }
+    }
   },
   // 复杂遍历运算在计算属性中计算，再返回。
   // 相当在data中定义过，类比created(){this.变量名=数据/其它量}
   computed: {
     pages () {
+      // 未用接口版
+      // const pages = []
+      // this.navs.forEach((item, index) => {
+      //   // 元素应该显示在哪页
+      //   const page = Math.floor(index / 8)
+      //   // 新建存储数据的详细量
+      //   if (!pages[page]) {
+      //     pages[page] = []
+      //   }
+      //   // 通过改动数据结构，存储数据！
+      //   pages[page].push(item)
+      // })
+      // return pages
+      // 接口版
       const pages = []
-      this.navs.forEach((item, index) => {
+      // 因此如果不涉及到对父组件数据修改，直接用props中接到的量！
+      this.iconList.forEach((item, index) => {
         // 元素应该显示在哪页
-        const page = Math.floor(index / 10)
+        const page = Math.floor(index / 8)
         // 新建存储数据的详细量
         if (!pages[page]) {
           pages[page] = []
@@ -79,7 +105,7 @@ export default {
     flex-wrap: wrap;
     width: 100%; // 只能给类型导航区域设置适应容器宽高比，这样不会出现页面内容抖动。关于不同机型padding-top会导致容器内部内容上下距离不同，只能通过媒体查询解决。
     height: 0;
-    padding-bottom: 39%;
+    padding-bottom: 45%;
     background-color: #ccc;
     padding-top: .15rem;
     // 带资源那种模块尽量采用适应容器宽高比
@@ -88,7 +114,7 @@ export default {
     // 要换两行只能给元素设置width,否则需要另起一行
     &-item{
         // 父级设置flex,子级分空间与调间距
-        width: 20%;
+        width: 25%;
         margin-bottom: .15rem;
     }
     &-link{
