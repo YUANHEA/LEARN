@@ -113,9 +113,9 @@ export default {
     // &-item{flex: 1;}
     // 要换两行只能给元素设置width,否则需要另起一行
     &-item{
-        // 父级设置flex,子级分空间与调间距
-        width: 25%;
-        margin-bottom: .15rem;
+      // 父级设置flex,子级分空间与调间距
+      width: 25%;
+      margin-bottom: .15rem;
     }
     &-link{
       // 如果是mixin中函数，需要用@include赋值
