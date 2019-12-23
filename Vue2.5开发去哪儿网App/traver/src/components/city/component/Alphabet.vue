@@ -28,7 +28,7 @@ export default {
   // 因此对于固定数值量，写到update生命周期函数中
   updated () {
     this.startY = this.$refs['A'][0].offsetTop
-    this.timer = 3
+    this.timer = 3 // 修改页面内容
   },
   computed: {
     // 需要根据数组下表去对应字母，先将数据如果是对象类型，先转为数组
