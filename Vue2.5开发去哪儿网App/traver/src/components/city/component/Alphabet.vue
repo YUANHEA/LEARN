@@ -28,7 +28,7 @@ export default {
   // 因此对于固定数值量，写到update生命周期函数中
   updated () {
     this.startY = this.$refs['A'][0].offsetTop
-    this.timer = 0 // 在特点支修改内容，改动会被当前分支检测到，其它分支没有影响
+    this.timer = 1 // 修改页面内容
   },
   computed: {
     // 需要根据数组下表去对应字母，先将数据如果是对象类型，先转为数组
