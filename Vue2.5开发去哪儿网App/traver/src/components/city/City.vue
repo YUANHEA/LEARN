@@ -42,7 +42,9 @@ export default {
     },
     // 处理axios数据
     getCityInf () {
-      axios.get('/static/mock/city.json').then(this.getCityInfSuc)
+      // axios.get('/static/mock/city.json').then(this.getCityInfSuc)
+      // 接口代理版
+      axios.get('/api/city.json').then(this.getCityInfSuc)
     },
     // 保存子组件传来数据
     handleChange (res) {
