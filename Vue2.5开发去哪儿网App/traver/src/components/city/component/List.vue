@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="btnList">
           <div class="btn-wrap">
-            <div class="btn">北京</div>
+            <div class="btn">{{this.$store.state.city}}</div>
           </div>
           <!-- <div class="btn-wrap">
           <div class="btn">北京</div>
@@ -18,7 +18,7 @@
       <div>
         <div class="title border-topbottom">热门城市</div>
         <div class="btnList">
-          <div class="btn-wrap" v-for="item of hotCities" :key="item.id">
+          <div class="btn-wrap" v-for="item of hotCities" :key="item.id" @click="handleChangeCity(item.name)">
             <div class="btn">{{item.name}}</div>
           </div>
           <!-- <div class="btn-wrap">
@@ -82,6 +82,17 @@ export default {
         // 利用scroll-better提供跳转到指定元素方法
         this.scroll.scrollToElement(element)
       }
+    }
+  },
+  methods: {
+    // 获取dom元素中数据，数据来源很多
+    handleChangeCity (city) {
+      // console.log(dat)
+      // 在组件事件中，通过dispatch触发vuex的action中相应方法
+      // this.$store.dispatch('changeCity', city)
+      // 由于组件没有涉及异步数据获取，组件可直接通过commit调用mutation中方法
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
     }
   }
 }

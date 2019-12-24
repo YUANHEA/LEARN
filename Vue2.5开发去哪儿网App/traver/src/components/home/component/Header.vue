@@ -20,7 +20,9 @@
           <div class="header-input" slot="center"><span class="iconfont">&#xe609;</span>输入城市/景点/游玩主题</div>
           <router-link to="./city" slot="right">
             <div class="header-right" >
-              {{city}}
+              <!-- {{city}} -->
+              <!-- 获取公共数据量 -->
+              {{this.$store.state.city}}
               <span class="iconfont arrow-icon">
                 &#xe64a;
               </span>
@@ -34,11 +36,12 @@
 import MeNavbar from 'base/navbar'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: {
-      type: String
-    }
-  },
+  // 不通过接收组件传值，用公共数据量
+  // props: {
+  //   city: {
+  //     type: String
+  //   }
+  // },
   components: {
     MeNavbar
   }

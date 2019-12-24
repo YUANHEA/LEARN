@@ -2,12 +2,17 @@
   <div>
     <div class="seacher">
       <!-- 给搜索框做双向数据绑定，用v-modle -->
-      <input class="seacher-input" type="text" placeholder="请输入需要搜索城市名" v-model="keyWord">
+      <input class="seacher-input" type="text" placeholder="请输入需要搜索城市名" v-model="keyWord" />
     </div>
     <!-- 显示搜索结果结构 -->
     <div class="search-content" ref="searchContent" v-show="keyWord">
       <ul>
-        <li v-for='item of list' :key="item.id" class="search-content-item border-topbottom" >{{item.name}}</li>
+        <li
+          v-for="item of list"
+          :key="item.id"
+          class="search-content-item border-topbottom"
+          @click="handleChangeCity(item.name)"
+        >{{item.name}}</li>
         <!-- v-if不能和v-for一起用.给否则设置v-show-->
         <!-- v-if将元素销毁，比较消耗性能。v-show只是display:none,隐藏。因此对于频繁切换，用v-show -->
         <li v-show="!list.length" class="search-content-item border-topbottom">没有匹配数据</li>
@@ -58,7 +63,10 @@ export default {
               // }
               // indexof判断存在内容数量
               // 数据量.indexof(被判断词量) > -1
-              if ((element.spell.indexOf(this.keyWord) > -1) || (element.name.indexOf(this.keyWord) > -1)) {
+              if (
+                element.spell.indexOf(this.keyWord) > -1 ||
+                element.name.indexOf(this.keyWord) > -1
+              ) {
                 // 将数据内容存到临时数组中
                 result.push(element)
               }
@@ -69,27 +77,38 @@ export default {
         this.list = result
       }, 100)
     }
+  },
+  methods: {
+    // 获取dom元素中数据，数据来源很多
+    handleChangeCity (city) {
+      // console.log(dat)
+      // 在组件事件中，通过dispatch触发vuex的action中相应方法
+      // this.$store.dispatch('changeCity', city)
+      // 由于组件没有涉及异步数据获取，组件可直接通过commit调用mutation中方法
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '~style/scss/_mixin.scss';
-.seacher{
-    height: .72rem;
-    background: $bgColor;
-    padding: .1rem;
-    &-input{
-        width: 100%;
-        height: .62rem;
-        line-height: .62rem;
-        // input输入框不用box-sizing: border-box;padding不能正常设置
-        box-sizing: border-box;
-        padding: 0 .1rem;
-        color: #666;
-    }
+@import "~style/scss/_mixin.scss";
+.seacher {
+  height: 0.72rem;
+  background: $bgColor;
+  padding: 0.1rem;
+  &-input {
+    width: 100%;
+    height: 0.62rem;
+    line-height: 0.62rem;
+    // input输入框不用box-sizing: border-box;padding不能正常设置
+    box-sizing: border-box;
+    padding: 0 0.1rem;
+    color: #666;
+  }
 }
-.search-content{
+.search-content {
   position: absolute;
   top: 1.78rem;
   left: 0;
@@ -98,9 +117,9 @@ export default {
   z-index: 1; // 显示覆盖在上层
   background-color: #eee;
   overflow: hidden;
-  &-item{
-    line-height: .62rem;
-    padding-left: .2rem;
+  &-item {
+    line-height: 0.62rem;
+    padding-left: 0.2rem;
     color: #666;
   }
 }
