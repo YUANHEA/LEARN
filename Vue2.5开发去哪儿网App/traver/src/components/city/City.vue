@@ -1,7 +1,8 @@
 <template>
   <div>
     <city-header></city-header>
-    <City-seacher></City-seacher>
+    <!-- 给搜索组件绑定值 -->
+    <City-seacher :cities="cities"></City-seacher>
     <city-list :hotCities="hotCities" :cities="cities" :letter="letter"></city-list>
     <!-- 父组件订阅消息 -->
     <Alphabet :cities="cities" @change="handleChange"></Alphabet>

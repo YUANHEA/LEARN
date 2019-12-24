@@ -22,7 +22,7 @@ export default {
     cities: Object
   },
   created () {
-    console.log(this.cities)
+    // console.log(this.cities)
   },
   //   因为Alphabet组件显示，一开始city{}没有数据，组件不显示。数据是axios获取到，传值，因此页面一开始接到值为空对象。
   // 因此对于固定数值量，写到update生命周期函数中
