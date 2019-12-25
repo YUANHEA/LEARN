@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="btnList">
           <div class="btn-wrap">
-            <div class="btn">{{this.$store.state.city}}</div>
+            <div class="btn">{{this.city}}</div>
           </div>
           <!-- <div class="btn-wrap">
           <div class="btn">北京</div>
@@ -54,7 +54,7 @@
         </ul>-->
         <!-- 行内元素ul,li没有img标签作为支撑，需要设置高度，直接换div标签 -->
         <div class="item-list" v-for="item of itemList" :key="item.id">
-          <div class="item border-bottom">{{item.name}}</div>
+          <div class="item border-bottom" @click="handleChangeCity(item.name)">{{item.name}}</div>
         </div>
       </div>
     </div>
@@ -64,6 +64,7 @@
 <script>
 // 这里安装根据到packkage.json文件中寻找
 import BScroll from 'better-scroll'
+import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'CityList',
   props: {
@@ -77,6 +78,10 @@ export default {
   mounted () {
     // this 相当 let
     this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  computed: {
+    // mapState将vuex中公共量映射到组件名为city计算属性中
+    ...mapState(['city'])
   },
   // watch属性监听数据改动
   watch: {
@@ -96,9 +101,12 @@ export default {
       // 在组件事件中，通过dispatch触发vuex的action中相应方法
       // this.$store.dispatch('changeCity', city)
       // 由于组件没有涉及异步数据获取，组件可直接通过commit调用mutation中方法
-      this.$store.commit('changeCity', city)
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
       this.$router.push('/')
-    }
+    },
+    // 将Mutation量映射到methods中名为changeCity的方法中
+    ...mapMutations(['changeCity'])
   }
 }
 </script>

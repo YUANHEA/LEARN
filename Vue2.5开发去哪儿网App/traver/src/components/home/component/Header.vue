@@ -22,7 +22,9 @@
             <div class="header-right" >
               <!-- {{city}} -->
               <!-- 获取公共数据量 -->
-              {{this.$store.state.city}}
+              <!-- {{this.$store.state.city}} -->
+              {{this.city}}
+              <!-- {{this.doubleCity}} -->
               <span class="iconfont arrow-icon">
                 &#xe64a;
               </span>
@@ -34,6 +36,9 @@
 
 <script>
 import MeNavbar from 'base/navbar'
+// 导入mapState
+import {mapState} from 'vuex'
+// import {mapState, mapGetters} from 'vuex'
 export default {
   name: 'HomeHeader',
   // 不通过接收组件传值，用公共数据量
@@ -44,6 +49,12 @@ export default {
   // },
   components: {
     MeNavbar
+  },
+  // 到computed写mapState,因为computed就为复杂计算设计
+  computed: {
+    // mapState将vuex中公共量映射到组件名为city计算属性中
+    ...mapState(['city'])
+    // ...mapGetters(['doubleCity'])
   }
 }
 </script>
@@ -116,7 +127,10 @@ export default {
       padding-left: .1rem;
     }
     &-right{
-      width: 1.24rem;
+      // width: 1.24rem;
+      // 内容文本过多导致布局混乱，用min-width配合padding
+      min-width: 1.24rem;
+      padding: 0 .1rem;
       text-align: center;
       color: #fff;
     }

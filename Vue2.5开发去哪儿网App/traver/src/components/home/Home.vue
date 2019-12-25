@@ -45,7 +45,7 @@ export default {
     getHomeInf: function () {
       // 在methors中调用方法不用方法名，因为同为对象？
       // 一个页面一个接口请求
-      axios.get('/static/mock/index.json').then(this.getHomeInfSucc)
+      axios.get('/api/index.json').then(this.getHomeInfSucc)
     },
     getHomeInfSucc: function (res) {
       console.log('数据', res)
