@@ -18,7 +18,12 @@
       <div>
         <div class="title border-topbottom">热门城市</div>
         <div class="btnList">
-          <div class="btn-wrap" v-for="item of hotCities" :key="item.id" @click="handleChangeCity(item.name)">
+          <div
+            class="btn-wrap"
+            v-for="item of hotCities"
+            :key="item.id"
+            @click="handleChangeCity(item.name)"
+          >
             <div class="btn">{{item.name}}</div>
           </div>
           <!-- <div class="btn-wrap">
