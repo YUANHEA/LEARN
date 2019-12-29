@@ -6,7 +6,8 @@
       <!-- <div></div> -->
       <!-- 多用ul与li与做列表项，不用div -->
       <ul>
-          <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+          <!-- 用router-link代替li,动态绑定路由 -->
+          <router-link class="item border-bottom" v-for="item of recommendList" :key="item.id" tag="li" :to="'/detail/'+item.id">
               <!-- li中再用div分模块 -->
               <div class="item-img-wrap">
                   <img class="item-img" :src="item.imgUrl" alt="#">
@@ -16,7 +17,7 @@
                   <p class="item-desc">{{item.desc}}</p>
                   <button class="item-btn">查看详情</button>
               </div>
-          </li>
+          </router-link>
       </ul>
   </div>
 </template>
