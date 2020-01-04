@@ -48,9 +48,10 @@ export default {
   methods: {
     // 先axios接受数据，再通过父组件传值给子组件，分数据到各个子组件
     getHomeInf: function () {
-      // 在methors中调用方法不用方法名，因为同为对象？
+      // 在methors中调用方法不用方法名，因为同为对象？http://120.24.70.157/ci3/index.php/test/goodsbyid?id=1
       // 一个页面一个接口请求
       axios.get('/api/index.json?city=' + this.city)
+      // axios.get('/api/ci3/index.php/test/goodsbyid?')
         .then(this.getHomeInfSucc)
     },
     getHomeInfSucc: function (res) {
