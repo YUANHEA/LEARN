@@ -39,7 +39,7 @@ export default {
         }
       ],
       // 控制幻灯片显示
-      showGallary: true
+      showGallary: false
     }
   },
   methods: {
