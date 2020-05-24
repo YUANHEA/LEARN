@@ -1,17 +1,17 @@
 <template>
-  <div>
-      <!-- 局部组件显示 -->
-      <!-- 幻灯片组件 -->
-      <home-header :city='city'></home-header>
-      <!-- 分类导航组件 -->
-      <swiper :swiperList='swiperList'></swiper>
-      <!-- 分类导航组件 -->
-      <home-nav :iconList='iconList'></home-nav>
-      <!-- 热销推荐组件 -->
-      <home-recomment :recommendList='recommendList'></home-recomment>
-      <!-- 周末游组件组件 -->
-      <home-weekend :weekendList='weekendList'></home-weekend>
-  </div>
+    <div>
+        <!-- 局部组件显示 -->
+        <!-- 幻灯片组件 -->
+        <home-header :city="city"></home-header>
+        <!-- 分类导航组件 -->
+        <swiper :swiperList="swiperList"></swiper>
+        <!-- 分类导航组件 -->
+        <home-nav :iconList="iconList"></home-nav>
+        <!-- 热销推荐组件 -->
+        <home-recomment :recommendList="recommendList"></home-recomment>
+        <!-- 周末游组件组件 -->
+        <home-weekend :weekendList="weekendList"></home-weekend>
+    </div>
 </template>
 
 <script>
@@ -40,6 +40,21 @@ export default {
       recommendList: [],
       weekendList: [],
       tempCity: '' // city公共量临时缓存量
+      // cityList: [
+      //   {
+      //     value: '1',
+      //     label: '北京'
+      //   },
+      //   {
+      //     value: '2',
+      //     label: '上海'
+      //   },
+      //   {
+      //     value: '3',
+      //     label: '广州'
+      //   }
+      // ],
+      // model1: '2'
     }
   },
   computed: {
@@ -50,7 +65,8 @@ export default {
     getHomeInf: function () {
       // 在methors中调用方法不用方法名，因为同为对象？http://120.24.70.157/ci3/index.php/test/goodsbyid?id=1
       // 一个页面一个接口请求
-      axios.get('/api/index.json?city=' + this.city)
+      axios
+        .get('/api/index.json?city=' + this.city)
       // axios.get('/api/ci3/index.php/test/goodsbyid?')
         .then(this.getHomeInfSucc)
     },
@@ -71,6 +87,9 @@ export default {
       }
     }
   },
+  // created () {
+  //   this.model1 = this.cityList[1].value
+  // },
   // 在mounted方法中调用axios方法
   mounted () {
     this.tempCity = this.city
